@@ -12,17 +12,17 @@ This guide depends on a valid azure subscribtion! This azure account must also b
 
 Then we need to create a resource group:
 
-´´´
+```
 az group create --name myResourceGroup --location "West Europe"
-´´´
+```
 
 ### Deployment
 
 Then we can deploy the stack with this command. Use the appropriate resourcegroupname from the command above. You may change any of the parameters in the parameter file (storageSKU is limited to some options).
 
-´´´
+```
 az deployment group create --name deployment --resource-group {resourcegroupname} --template-file azuredeploy.json --parameters .\azuredeploy.parameters.json
-´´´
+```
 
 ### Testing
 
