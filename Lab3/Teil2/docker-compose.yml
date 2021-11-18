@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: MyMySql/Dockerfile
     volumes:
-      - databasevolume:/avar/lib/mysql
+      - databasevolume:/var/lib/mysql
     environment:
       DB_USER: wordpress
       DB_PASSWORD: wordpress

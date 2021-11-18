@@ -9,11 +9,10 @@ RUN wget http://wordpress.org/latest.tar.gz  && tar -xzvf latest.tar.gz && rm -r
 RUN rm -f /var/www/html/index.html
 RUN cp -a /wordpress/* /var/www/html
 RUN chown -R www-data:www-data /var/www/html
-
-RUN service apache2 restart
+RUN chmod -R 755 /var/www/html
 
 EXPOSE 80
 
 VOLUME [ "/var/www/html" ]
 
-CMD apachectl -D FOREGROUND
+ENTRYPOINT apachectl -D FOREGROUND

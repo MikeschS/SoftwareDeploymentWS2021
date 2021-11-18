@@ -7,11 +7,13 @@ ENV DB_NAME=testdb
 RUN apt-get update
 RUN echo "mysql-server mysql-server/root_password password rootpassword" | debconf-set-selections && echo "mysql-server mysql-server/root_password_again password rootpassword" | debconf-set-selections && apt-get -y install mysql-server
 
-RUN 
-
 RUN sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
 
-VOLUME /var/lib/mysql
+RUN rm -rf /var/lib/apt/lists/* && \
+chown -R mysql:mysql /var/lib/mysql /var/run/mysqld && \
+chmod 1777 /var/run/mysqld /var/lib/mysql
+
+VOLUME [ "/var/lib/mysql" ]
 
 EXPOSE 3306
 
