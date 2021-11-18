@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  database:
+    build:
+      context: .
+      dockerfile: MyMySql/Dockerfile
+    volumes:
+      - databasevolume:/avar/lib/mysql
+    environment:
+      DB_USER: wordpress
+      DB_PASSWORD: wordpress
+      DB_NAME: wordpress
+
+  wordpress:
+    depends_on:
+      - database
+    build:
+      context: .
+      dockerfile: MyWordpress/Dockerfile
+    ports:
+      - "1000:80"
+    volumes:
+      - wordpressvolume:/var/www/html
+
+volumes:
+  databasevolume:
+  wordpressvolume:
