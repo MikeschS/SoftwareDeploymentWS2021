@@ -1,6 +1,10 @@
 # Lab 4
 
 ## Prerequesites
+You need to have an azure kubernetes cluster up and running.
+
+![image info](images/kubernetes-cluster.png)
+
 You need to have installed kubectl and have an config file for your AKS cluster. The config can be downloaded by 
 ```
 az aks get-credentials -g <RessourceGroupName> -n <ClusterName>
@@ -45,3 +49,5 @@ By executing
 kubectl get services wordpress
 ```
 you get the external IP-Address of the wordpress-Service. This IP-Address can be entered into the web-browser. The Wordpress installation should now appear.
+
+![image info](images/wordpress-result.png)
